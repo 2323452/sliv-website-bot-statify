@@ -1,0 +1,332 @@
+<!doctype html>
+<html>
+	<head>
+	<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/now-ui-kit.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600,700,800,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700,800,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,600,700,800,900&display=swap" rel="stylesheet">
+    <title>Commands | Statify</title>
+    <link rel="shortcut icon" type="image/gif" href="https://media.discordapp.net/attachments/738817539739615243/804664016106160138/StatifyIconRound.gif">
+	<meta content="Statify Website | Commands" property="og:title">
+	<meta content="Here you will see all Commands of Statify! Its worth checking out!" property="og:description">
+	  <meta content="https://statifybot.net/commands" property="og:url">
+	  <meta content="https://media.discordapp.net/attachments/738817539739615243/804664016106160138/StatifyIconRound.gif" property="og:image">
+	  <meta content="#2a2755" data-react-helmet="true" name="theme-color">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+		<script src="js/jQuery.js@t=%253C%253Fphp%2520echo%2520$datum%3B%2520%253F%253E"></script>
+		<script src="js/commands.js@t=%253C%253Fphp%2520echo%2520$datum%3B%2520%253F%253E"></script>
+	</head>
+	<body>
+	<nav class="navbar navbar-expand-lg bg-transparent">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <img src="assets/menuIcon.svg" width="20px" height="20px" style="max-width: none !important;">
+    </button>
+    <img src="https://media.discordapp.net/attachments/738817539739615243/804664016106160138/StatifyIconRound.gif" width="50" height="50">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-left: 20px !important">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+</nav>
+<div class="heading">
+    <h1 class="display-5 title">Thank you for Choosing Statify!</h1>
+    <p class="subtitle">Thanks for choosing Statify as your Statistics Bot for your Discord Server</p>
+    <br /><br /><br /><br /><br /><br />
+</div>
+
+<div class="features" id="cmds">
+    <form action="commands@cat=%2522$%257Blink%257D%2522.html" class="search-bar">
+        <input type="search" name="search" pattern=".*\S.*" required>
+        <button class="search-btn" type="submit">
+            <span>Search</span>
+        </button>
+    </form>
+	<p class="p">Statify Search | Beta 0.0.1</p>
+</div>
+
+<div class="footer">
+        <div class="bot-footer">
+            <img src="https://media.discordapp.net/attachments/738817539739615243/804664016106160138/StatifyIconRound.gif" width="100" height="100"><br /><br>
+            Copyright © Statify Bot - 2021<br>
+            <a href="imprint.html">Imprint</a> - <a href="privacy.html">Privacy Policy</a>
+        </div><br/>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="js/now-ui-kit.min.js"></script>
+<script src="js/main.js"></script>
+<script>
+	function similarity(s1, s2) {
+  var longer = s1;
+  var shorter = s2;
+  if (s1.length < s2.length) {
+    longer = s2;
+    shorter = s1;
+  }
+  var longerLength = longer.length;
+  if (longerLength == 0) {
+    return 1.0;
+  }
+  return (longerLength - editDistance(longer, shorter)) / parseFloat(longerLength);
+}
+function editDistance(s1, s2) {
+  s1 = s1.toLowerCase();
+  s2 = s2.toLowerCase();
+
+  var costs = new Array();
+  for (var i = 0; i <= s1.length; i++) {
+    var lastValue = i;
+    for (var j = 0; j <= s2.length; j++) {
+      if (i == 0)
+        costs[j] = j;
+      else {
+        if (j > 0) {
+          var newValue = costs[j - 1];
+          if (s1.charAt(i - 1) != s2.charAt(j - 1))
+            newValue = Math.min(Math.min(newValue, lastValue),
+              costs[j]) + 1;
+          costs[j - 1] = lastValue;
+          lastValue = newValue;
+        }
+      }
+    }
+    if (i > 0)
+      costs[s2.length] = lastValue;
+  }
+  return costs[s2.length];
+}
+    fetch('/api/commands/v2').then(function (response) {
+	// The API call was successful!
+	return response.json();
+}).then(async function (data) {
+    var url_string = window.location
+var url = new URL(url_string);
+ let cat = url.searchParams.get("cat")
+ let prefix = url.searchParams.get("prefix")
+ let search = url.searchParams.get("search")
+if(!search){
+ if(!cat){
+    for (const category of data.categories) {
+        if(category === "None set") link = "None_set"
+        else link = category
+        document.getElementById("cmds").innerHTML += `<section id="${category}"><a class="cat" href='commands@cat=%2522$%257Blink%257D%2522.html''>${category}</a><div id="cmd.${category}" class="">`
+    
+        document.getElementById(`${category}`).innerHTML += `</div></section>`
+        };
+        document.getElementById("cmds").innerHTML += "<br><br><br><br><br><br><br>"
+    }else if(cat){
+        for (const category of data.categories) {
+            if(category === cat.replace('"', "").replace('"', "").replace("_", " ")) {
+        document.getElementById("cmds").innerHTML += `<section id="${category}"><h3 class="cat">${category}</h3><div id="cmd.${category}" class="">`
+            await data.commands.forEach(command => {
+            if(command.category !== cat.replace('"', "").replace('"', "").replace("_", " ")) return
+
+        document.getElementById(`cmd.${command.category}`).innerHTML += `<li class="li"><strong><p class="p" style="font-size: 25px !important">${command.name.replace("s!", prefix || "s!")}</p></strong><strong><p class="p">Description:</strong> ${command.description}<br><strong>Premium?:</strong> ${command.premium}<br><strong>Aviable for:</strong> ${command.permission}<br><strong>Arguments:</strong> ${command.args.replace("<", "[").replace(">", "]")}<br><strong>Example Usage:</strong> ${command.usage.replace("<", "[").replace(">", "]")}</p></li>`
+            })
+            document.getElementById("cmds").innerHTML += `<br><br><br><br></div></section><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><a role="button" style="left: 50% !important"class="btn btn-secondary btn-lg" href="commands@prefix=$%257Bprefix%2520%257C%257C.html" "}" >Go Back</a><br><br><br><br><br><br><br><br><br><br>`
+    }
+        };
+    
+    
+    }}
+   else if(search){
+	   let cmd_exist = false
+                await data.commands.forEach(command => {
+            if(similarity(command.name.replace("s!", ""), search.replace('"', "").replace('"', "").replace("_", " ")) < 0.4) return
+					cmd_exist = true
+        document.getElementById(`cmds`).innerHTML += `<li class="li"><strong><p class="p" style="font-size: 25px !important">${command.name.replace("s!", prefix || "s!")}</p></strong><strong><p class="p">Description:</strong> ${command.description}<br><strong>Premium?:</strong> ${command.premium}<br><strong>Aviable for:</strong> ${command.permission}<br><strong>Arguments:</strong> ${command.args.replace("<", "[").replace(">", "]")}<br><strong>Example Usage:</strong> ${command.usage.replace("<", "[").replace(">", "]")}</p></li>`
+            })
+			if(!cmd_exist){ document.getElementById("cmds").innerHTML += `<h4 class="p">Sorry but we couldnt find any Commands with any Similarity with the String "${search.replace('"', "").replace('"', "").replace("_", " ")}"!<p class="p">Please try another String!</p>`}
+            document.getElementById("cmds").innerHTML += `<br><br><br><br></div></section><br><br><br><br><br><br><br><br><br><br><a role="button" style="left: 50% !important"class="btn btn-secondary btn-lg" href="commands@prefix=$%257Bprefix%2520%257C%257C.html" "}" >Go Back</a><br><br><br><br><br><br><br><br><br><br>`
+    }
+})
+</script>
+<style>
+ button, input {
+	font: 1em Hind, sans-serif;
+	line-height: 1.5em;
+}
+input {
+	color: #171717;
+}
+.search-bar {
+	display: flex;
+}
+
+.search-bar input,
+.search-btn, 
+.search-btn:before, 
+.search-btn:after {
+	transition: all 0.25s ease-out;
+}
+.search-bar input,
+.search-btn {
+	width: 3em;
+	height: 3em;
+}
+.search-bar input:invalid:not(:focus),
+.search-btn {
+	cursor: pointer;
+}
+.search-bar,
+.search-bar input:focus,
+.search-bar input:valid  {
+	width: 100%;
+}
+.search-bar input:focus,
+.search-bar input:not(:focus) + .search-btn:focus {
+	outline: transparent;
+}
+.search-bar {
+	margin: auto;
+	padding: 1.5em;
+	justify-content: center;
+	max-width: 30em;
+}
+.search-bar input {
+	background: transparent;
+	border-radius: 1.5em;
+	box-shadow: 0 0 0 0.4em #171717 inset;
+	padding: 0.75em;
+	transform: translate(0.5em,0.5em) scale(0.5);
+	transform-origin: 100% 0;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+.search-bar input::-webkit-search-decoration {
+	-webkit-appearance: none;
+}
+.search-bar input:focus,
+.search-bar input:valid {
+	background: #fff;
+	border-radius: 0.375em 0 0 0.375em;
+	box-shadow: 0 0 0 0.1em #d9d9d9 inset;
+	transform: scale(1);
+}
+.search-btn {
+	border-radius: 0 0.75em 0.75em 0 / 0 1.5em 1.5em 0;
+	padding: 0.75em;
+	position: relative;
+	transform: translate(0.25em,0.25em) rotate(45deg) scale(0.25,0.125);
+	transform-origin: 0 50%;
+}
+.search-btn:before, 
+.search-btn:after {
+	content: "";
+	display: block;
+	opacity: 0;
+	position: absolute;
+}
+.search-btn:before {
+	border-radius: 50%;
+	box-shadow: 0 0 0 0.2em #f1f1f1 inset;
+	top: 0.75em;
+	left: 0.75em;
+	width: 1.2em;
+	height: 1.2em;
+}
+.search-btn:after {
+	border-radius: 0 0.25em 0.25em 0;
+	top: 51%;
+	left: 51%;
+	width: 0.75em;
+	height: 0.25em;
+	transform: translate(0.2em,0) rotate(45deg);
+	transform-origin: 0 50%;
+}
+.search-btn span {
+	display: inline-block;
+	overflow: hidden;
+	width: 1px;
+	height: 1px;
+}
+
+/* Active state */
+.search-bar input:focus + .search-btn,
+.search-bar input:valid + .search-btn {
+	background: #3a3577;
+	border-radius: 0 0.375em 0.375em 0;
+	transform: scale(1);
+}
+.search-bar input:focus + .search-btn:before, 
+.search-bar input:focus + .search-btn:after,
+.search-bar input:valid + .search-btn:before, 
+.search-bar input:valid + .search-btn:after {
+	opacity: 1;
+}
+.search-bar input:focus + .search-btn:hover,
+.search-bar input:valid + .search-btn:hover,
+.search-bar input:valid:not(:focus) + .search-btn:focus {
+	background: #3a3577;
+}
+.search-bar input:focus + .search-btn:active,
+.search-bar input:valid + .search-btn:active {
+	transform: translateY(1px);
+}
+
+@media screen and (prefers-color-scheme: dark) {
+	input {
+		color: #f1f1f1;
+	}
+	
+	.search-bar input {
+		box-shadow: 0 0 0 0.4em #f1f1f1 inset;
+	}
+	.search-bar input:focus,
+	.search-bar input:valid {
+		background: #3d3d3d;
+		box-shadow: 0 0 0 0.1em #3d3d3d inset;
+	}
+	.search-btn {
+		background: #f1f1f1;
+	}
+
+ul {
+  width: 500px;
+}
+.li {
+  width: 50%;
+  float: left;
+  border: 1px solid #000;
+  margin: 0;
+  list-style-type: none;
+  box-sizing: border-box;
+}
+.li:nth-child(odd) {
+  clear: left;
+}
+    .fadein, .fadeout {
+    opacity: 0 !important;
+    -moz-transition: opacity 0.4s ease-in-out !important;
+    -o-transition: opacity 0.4s ease-in-out !important;
+    -webkit-transition: opacity 0.4s ease-in-out !important;
+    transition: opacity 0.4s ease-in-out !important;
+}
+.fadein {
+    opacity: 1 !important;
+}
+.cat{
+    color:white !important;
+    font-size: 30px !important;
+
+}
+.p{
+    color:white !important;
+    
+
+}
+
+</style>
+	</body>
+</html>
